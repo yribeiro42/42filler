@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2017/11/09 15:50:48 by yribeiro         ###   ########.fr       */
+/*   Updated: 2017/11/09 16:32:48 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		read_map(t_env *env)
 	char	*line;
 	int		ret;
 
-	line = NULL;
+	//line = NULL;
 	while (get_next_line(STDIN_FILENO, &line) != 0)
 	{
 		if (!env->player && ft_strstr(line, "./yribeiro.filler"))
