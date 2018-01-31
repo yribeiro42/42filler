@@ -12,28 +12,6 @@
 
 #include "filler.h"
 
-// int		read_map(t_env *env)
-// {
-// 	char	*line;
-// 	int		ret;
-
-// 	while (get_next_line(0, &line) != 0)
-// 	{
-// 		if (!env->player && ft_strstr(line, "./yribeiro.filler"))
-// 		{
-// 			env->player = get_player(env, line);
-// 		}
-// 		if (ft_strncmp(line, "Plateau", 7) == 0)
-// 		{
-// 			get_coord(env, line);
-// 		}
-// 		dprintf(2, GRN "%s\n" RESET, line);
-// 		get_board(env, line);
-// 		ft_strdel(&line);
-// 	}
-// 	return (0);
-// }
-
 int		read_map(t_env *env)
 {
 	char	*line;
@@ -47,71 +25,52 @@ int		read_map(t_env *env)
 		get_coord(env, line);
 	get_next_line(0, &line);
 	get_board(env);
+	get_next_line(0, &line);
+	get_piece(env, line);
+	make_piece(env);
 	return (0);
 }
 
-// int		get_board(t_env *env, char *line)
-// {
-// 	int		i;
-// 	int		j;
-
-// 	i = 0;
-// 	env->board = malloc(sizeof(char) * env->map_y);
-// 	while (i++ < env->map_y)
-// 	{
-// 		env->board[i] = malloc(sizeof(char) * env->map_x);
-// 		while (j < env->map_x)
-// 		{
-// 			env->board[i][j] = 'x';
-// 			dprintf(2, RED "%c" RESET, env->board[i][j]);
-// 			j++;
-// 		}
-// 		dprintf(2, RED "\n" RESET);
-// 	}
-// 	return (0);
-// }
-
 void	print_board(t_env *env)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	dprintf(2, "[y : %d][x : %d]\n", env->map_y, env->map_x);
 	while (i < env->map_y)
 	{
-		dprintf(2,"%03d : [%s]\n",i, env->board[i]);
+		dprintf(2, "%03d : %s\n", i, env->board[i]);
 		i++;
 	}
 }
-void	init_board(t_env *env)
+
+void	print_piece(t_env *env)
 {
 	int		i;
-	
+
 	i = 0;
-	env->board = ft_memalloc(env->map_y + 1);
+	dprintf(2, "[y : %d][x : %d]\n", env->piece_y, env->piece_x);
+	while (i < env->piece_y)
+	{
+		dprintf(2, "%s\n", env->piece[i]);
+		i++;
+	}
 }
 
-int		get_board(t_env *env)
+int		get_player(t_env *env, char *line)
 {
-	char	*line;
-	int		i;
-	int		y;
+	char	*lookup;
 
-	init_board(env);
-	i = 0;
-	while (i < env->map_y)
-	{
-		get_next_line(0, &line);
-		line += 4;
-		env->board[i++] = line;
-	}
-	print_board(env);
-	return (0);
+	lookup = line;
+	while (*lookup != 'p')
+		lookup++;
+	lookup++;
+	return (*lookup - '0');
 }
 
 int		get_coord(t_env *env, char *line)   // board size
 {
-	char *lookup;
+	char	*lookup;
 
 	lookup = line;
 	while (ft_isalpha(*lookup))
@@ -131,13 +90,50 @@ int		get_coord(t_env *env, char *line)   // board size
 	return (0);
 }
 
-int		get_player(t_env *env, char *line)
+int		get_board(t_env *env)
 {
+	char	*line;
+	int		i;
+
+	env->board = ft_memalloc(env->map_y + 1);
+	i = 0;
+	while (i < env->map_y)
+	{
+		get_next_line(0, &line);
+		line += 4;
+		env->board[i++] = line;
+	}
+	print_board(env);
+	return (0);
+}
+
+int		get_piece(t_env *env, char *line)
+{
+	int		i;
 	char	*lookup;
 
 	lookup = line;
-	while (*lookup != 'p')
+	while (ft_isalpha(*lookup))
 		lookup++;
 	lookup++;
-	return (*lookup - '0');
+	env->piece_x = ft_atoi(lookup);
+	lookup++;
+	env->piece_y = ft_atoi(lookup);
+	return (0);
+}
+
+int		make_piece(t_env *env)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	env->piece = ft_memalloc(env->piece_y + 1);
+	while (i < env->piece_y)
+	{
+		get_next_line(0, &line);
+		env->piece[i++] = line;
+	}
+	print_piece(env);
+	return (0);
 }

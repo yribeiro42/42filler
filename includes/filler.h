@@ -22,7 +22,10 @@ typedef	struct	s_env
 	int			map_x;
 	int			map_y;
 	int			player;
+	int			piece_x;
+	int			piece_y;
 	char		**board;
+	char		**piece;
 }				t_env;
 
 
@@ -30,6 +33,8 @@ int		read_map(t_env *env);
 int		get_player(t_env *env, char *line);
 int		get_coord(t_env *env, char *line);
 int		get_board(t_env *env);
+int		get_piece(t_env *env, char *line);
+int		make_piece(t_env *env);
 
 #endif
 
