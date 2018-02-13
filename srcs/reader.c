@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2017/11/22 23:19:17 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:49:14 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		read_map(t_env *env)
 	get_next_line(0, &line);
 	get_piece(env, line);
 	make_piece(env);
+	place_piece(env);
 	return (0);
 }
 
@@ -36,23 +37,10 @@ void	print_board(t_env *env)
 	int		i;
 
 	i = 0;
-	dprintf(2, "[y : %d][x : %d]\n", env->map_y, env->map_x);
+	dprintf(2, "[x : %d][y : %d]\n", env->map_y, env->map_x);
 	while (i < env->map_y)
 	{
 		dprintf(2, "%03d : %s\n", i, env->board[i]);
-		i++;
-	}
-}
-
-void	print_piece(t_env *env)
-{
-	int		i;
-
-	i = 0;
-	dprintf(2, "[y : %d][x : %d]\n", env->piece_y, env->piece_x);
-	while (i < env->piece_y)
-	{
-		dprintf(2, "%s\n", env->piece[i]);
 		i++;
 	}
 }
@@ -104,36 +92,5 @@ int		get_board(t_env *env)
 		env->board[i++] = line;
 	}
 	print_board(env);
-	return (0);
-}
-
-int		get_piece(t_env *env, char *line)
-{
-	int		i;
-	char	*lookup;
-
-	lookup = line;
-	while (ft_isalpha(*lookup))
-		lookup++;
-	lookup++;
-	env->piece_x = ft_atoi(lookup);
-	lookup++;
-	env->piece_y = ft_atoi(lookup);
-	return (0);
-}
-
-int		make_piece(t_env *env)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	env->piece = ft_memalloc(env->piece_y + 1);
-	while (i < env->piece_y)
-	{
-		get_next_line(0, &line);
-		env->piece[i++] = line;
-	}
-	print_piece(env);
 	return (0);
 }
