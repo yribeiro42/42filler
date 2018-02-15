@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/14 14:59:45 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:23:55 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int		read_map(t_env *env)
 	char	*line;
 	int		ret;
 
+	//printf("12 14\n");
 	get_next_line(0, &line);
+//	dprintf(2, "\ngnl[%d]\n", get_next_line(0, &line));
 	if (!env->player && ft_strstr(line, "./yribeiro.filler"))
 		env->player = get_player(env, line);
 	get_next_line(0, &line);
@@ -25,9 +27,8 @@ int		read_map(t_env *env)
 		get_coord(env, line);
 	get_next_line(0, &line);
 	get_board(env);
-	get_next_line(0, &line);
-	get_piece(env, line);
-	make_piece(env);
+	get_piece(env);
+	//make_piece(env);
 	place_piece(env);
 	return (0);
 }
@@ -83,14 +84,15 @@ int		get_board(t_env *env)
 	char	*line;
 	int		i;
 
-	env->board = ft_memalloc(env->map_y + 1);
+	env->board = ft_memalloc(env->map_y);
 	i = 0;
 	while (i < env->map_y)
 	{
 		get_next_line(0, &line);
 		line += 4;
-		env->board[i++] = line;
+		env->board[i] = line;
+		i++;
 	}
-	print_board(env);
+	//print_board(env);
 	return (0);
 }

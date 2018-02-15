@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/14 15:47:03 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:17:37 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_piece(t_env *env)
 	int		i;
 
 	i = 0;
-	dprintf(2, "[y : %d][x : %d]\n", env->piece_y, env->piece_x);
+	dprintf(2, "\nPiece %d %d:\n", env->piece_y, env->piece_x);
 	while (i < env->piece_y)
 	{
 		dprintf(2, "%s\n", env->piece[i]);
@@ -25,12 +25,12 @@ void	print_piece(t_env *env)
 	}
 }
 
-int		get_piece(t_env *env, char *line)
+int		get_piece(t_env *env)
 {
 	int		i;
 	char	*lookup;
 
-	lookup = line;
+	get_next_line(0, &lookup);
 	while (ft_isalpha(*lookup))
 		lookup++;
 	lookup++;
@@ -46,7 +46,7 @@ int		make_piece(t_env *env)
 	int		i;
 
 	i = 0;
-	env->piece = ft_memalloc(env->piece_y + 1);
+	env->piece = ft_memalloc(env->piece_y);
 	while (i < env->piece_y)
 	{
 		get_next_line(0, &line);
@@ -83,12 +83,14 @@ int		place_piece(t_env *env)
 {
 	int		pos;
 
-	pos = get_position(env);
+	//pos = get_position(env);
 	//pos++;
-	dprintf(2, "=[%d]\n", pos);
+	//dprintf(2, "=[%d]\n", pos);
 
-	printf("%d %d\n", pos%env->map_x, pos/env->map_x);
-	dprintf(2, "\nX:%d Y:%d\n", pos%env->map_x, pos/env->map_x);
+	printf("3 1\n");
+	//dprintf(2, "3 1\n");
+	//printf("%d %d\n", pos/env->map_x, pos%env->map_x);
+	//dprintf(2, "\nX:%d Y:%d\n", pos/env->map_x, pos%env->map_x);
 
 	return (0);
 }
