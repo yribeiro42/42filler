@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/15 17:23:55 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/16 13:41:40 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,11 @@ int		read_map(t_env *env)
 	char	*line;
 	int		ret;
 
-	//printf("12 14\n");
-	get_next_line(0, &line);
-//	dprintf(2, "\ngnl[%d]\n", get_next_line(0, &line));
-	if (!env->player && ft_strstr(line, "./yribeiro.filler"))
-		env->player = get_player(env, line);
-	get_next_line(0, &line);
-	if (ft_strncmp(line, "Plateau", 7) == 0)
-		get_coord(env, line);
-	get_next_line(0, &line);
+	get_player(env);
+	get_coord(env);
 	get_board(env);
 	get_piece(env);
-	//make_piece(env);
+	make_piece(env);
 	place_piece(env);
 	return (0);
 }
@@ -41,27 +34,26 @@ void	print_board(t_env *env)
 	dprintf(2, "[map_y : %d][map_x : %d]\n\n", env->map_y, env->map_x);
 	while (i < env->map_y)
 	{
-		dprintf(2, "%03d : %s\n", i, env->board[i]);
+		dprintf(2, "%03d %s\n", i, env->board[i]);
 		i++;
 	}
 }
 
-int		get_player(t_env *env, char *line)
+void	get_player(t_env *env)
 {
 	char	*lookup;
 
-	lookup = line;
-	while (*lookup != 'p')
-		lookup++;
-	lookup++;
-	return (*lookup - '0');
+	get_next_line(0, &lookup);
+	lookup += 10;
+	env->player = *lookup - '0';
+	dprintf(2, "[p%d]\n", env->player);
 }
 
-int		get_coord(t_env *env, char *line)   // board size
+void	get_coord(t_env *env)
 {
 	char	*lookup;
 
-	lookup = line;
+	get_next_line(0, &lookup);
 	while (ft_isalpha(*lookup))
 		lookup++;
 	lookup++;
@@ -76,14 +68,14 @@ int		get_coord(t_env *env, char *line)   // board size
 		env->map_x = env->map_x * 10 + (*lookup - '0');
 		lookup++;
 	}
-	return (0);
 }
 
-int		get_board(t_env *env)
+void	get_board(t_env *env)
 {
 	char	*line;
 	int		i;
 
+	get_next_line(0, &line);
 	env->board = ft_memalloc(env->map_y);
 	i = 0;
 	while (i < env->map_y)
@@ -93,6 +85,5 @@ int		get_board(t_env *env)
 		env->board[i] = line;
 		i++;
 	}
-	//print_board(env);
-	return (0);
+	print_board(env);
 }
