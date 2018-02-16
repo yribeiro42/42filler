@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/16 15:46:08 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/16 16:20:12 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	get_piece(t_env *env)
 	char	*lookup;
 
 	get_next_line(0, &lookup);
+	dprintf(2, "[%s]\n", lookup);
 	while (ft_isalpha(*lookup))
 		lookup++;
 	lookup++;
@@ -49,10 +50,11 @@ void	make_piece(t_env *env)
 	while (i < env->piece_y)
 	{
 		get_next_line(0, &line);
+		dprintf(2, "[%s]\n", line);
 		env->piece[i] = line;
 		i++;
 	}
-	//print_piece(env);
+	print_piece(env);
 }
 
 int		place_piece(t_env *env)

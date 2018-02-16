@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/16 15:46:20 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/16 16:17:31 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	get_player(t_env *env)
 	char	*lookup;
 
 	get_next_line(0, &lookup);
+	dprintf(2, "1[%s]\n", lookup);
 	lookup += 10;
 	env->player = *lookup - '0';
 }
@@ -39,20 +40,11 @@ void	get_coord(t_env *env)
 	char	*lookup;
 
 	get_next_line(0, &lookup);
-	while (ft_isalpha(*lookup))
-		lookup++;
-	lookup++;
+	lookup += 8;
+	env->map_y = ft_atoi(lookup);
 	while (ft_isdigit(*lookup))
-	{
-		env->map_y = env->map_y * 10 + (*lookup - '0');
 		lookup++;
-	}
-	lookup++;
-	while (ft_isdigit(*lookup))
-	{
-		env->map_x = env->map_x * 10 + (*lookup - '0');
-		lookup++;
-	}
+	env->map_x = ft_atoi(lookup);
 }
 
 void	get_board(t_env *env)
@@ -61,14 +53,16 @@ void	get_board(t_env *env)
 	int		i;
 
 	get_next_line(0, &line);
+	dprintf(2, "[%s]\n", line);
 	env->board = ft_memalloc(env->map_y);
 	i = 0;
 	while (i < env->map_y)
 	{
 		get_next_line(0, &line);
+		dprintf(2, "[%s]\n", line);
 		line += 4;
 		env->board[i] = line;
 		i++;
 	}
-	//print_board(env);
+	print_board(env);
 }
