@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:56:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/16 14:00:28 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/16 15:46:26 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef	struct	s_env
 }				t_env;
 
 
-int		read_map(t_env *env);
 void	get_player(t_env *env);
 void	get_coord(t_env *env);
 void	get_board(t_env *env);

@@ -6,25 +6,11 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/16 13:41:40 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/16 15:46:20 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-int		read_map(t_env *env)
-{
-	char	*line;
-	int		ret;
-
-	get_player(env);
-	get_coord(env);
-	get_board(env);
-	get_piece(env);
-	make_piece(env);
-	place_piece(env);
-	return (0);
-}
 
 void	print_board(t_env *env)
 {
@@ -46,7 +32,6 @@ void	get_player(t_env *env)
 	get_next_line(0, &lookup);
 	lookup += 10;
 	env->player = *lookup - '0';
-	dprintf(2, "[p%d]\n", env->player);
 }
 
 void	get_coord(t_env *env)
@@ -85,5 +70,5 @@ void	get_board(t_env *env)
 		env->board[i] = line;
 		i++;
 	}
-	print_board(env);
+	//print_board(env);
 }
