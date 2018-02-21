@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/21 13:16:50 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/21 16:44:05 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	get_piece(t_env *env)
 	char	*lookup;
 
 	get_next_line(0, &lookup);
-	dprintf(2, "[%s]\n", lookup);
 	while (ft_isalpha(*lookup))
 		lookup++;
 	lookup++;
@@ -50,39 +49,8 @@ void	make_piece(t_env *env)
 	while (i < env->piece_y)
 	{
 		get_next_line(0, &line);
-		dprintf(2, "[%s]\n", line);
 		env->piece[i] = line;
 		i++;
 	}
 	print_piece(env);
-}
-
-int		place_piece(t_env *env)
-{
-	int		pos;
-
-	pos = get_position(env);
-	printf("%d %d\n", pos / env->map_x, pos % env->map_x);
-	dprintf(2, "\nY:%d X:%d\n", pos / env->map_x, pos % env->map_x);
-	return (0);
-}
-
-int		get_position(t_env *env)
-{
-	int	i;
-	int	y;
-
-	i = 0;
-	while (i < env->map_y)
-	{
-		y = 0;
-		while (y < env->map_x)
-		{
-			if (env->board[i][y] == 'X')
-				return (y + (i * env->map_x));
-			y++;
-		}
-		i++;
-	}
-	return (-1);
 }
