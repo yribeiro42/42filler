@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:26:16 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/21 16:44:26 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/22 16:26:56 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		get_position(t_env *env)
 		y = 0;
 		while (y < env->map_x)
 		{
-			if (env->board[i][y] == 'X')
+			if (env->board[i][y] == env->player)
 				return (y + (i * env->map_x));
 			y++;
 		}
@@ -34,24 +34,60 @@ int		get_position(t_env *env)
 
 int		place_piece(t_env *env)
 {
-	int		pos;
-	int		pos_x;
-	int		pos_y;
+	int		row;
+	int		col;
+	int		ret;
 
-	pos = get_position(env);
-	pos_y = pos / env->map_x;
-	pos_x = pos % env->map_x;
-
-	dprintf(2, "\npos X:[%d]\n", pos_x);
-	dprintf(2, "piece_x:[%d]", env->piece_x);
-	while ((pos_x + env->piece_x + 1) > env->map_x)
+	row = env->map_y;
+	while (row > 0)
 	{
-		pos_x--;
-		dprintf(2, "\nY:%d X:%d\n", pos_y, pos_x);
+		col = env->map_x;
+		while (col > 0)
+		{
+			ret = try_place(row, col, env);
+			if (ret == 1)
+			{
+				send_position(env);
+				return (1);
+			}
+			col--;
+		}
+		row--;
 	}
-	printf("%d %d\n", pos_y, pos_x);
+	return (0);
+}
 
 
-	//dprintf(2, "\nY:%d X:%d\n", pos / env->map_x, pos % env->map_x);
+int		try_place(int row, int col, t_env *env)
+{
+	int		i;
+	int		j;
+	int		contact;
+
+	i = -1;
+	while (++i < env->piece_y)
+	{
+		j = -1;
+		while (j++ < env->piece_x)
+		{
+			dprintf(2, "\npiece[%d][%d]:[%c]", i, j, env->piece[i][j]);
+			dprintf(2, "\nboard[%d][%d]:[%c]", (row + i), (col + j), env->board[row + i][col + j]);
+			if (env->piece[i][j] == '*' && (env->board[row + i][col + j] ==
+				env->player))
+				contact++;
+		}
+	}
+	if (contact == 1)
+	{
+		env->pos_y = row;
+		env->pos_x = col;
+		return (1);
+	}
+	return (0);
+}
+
+int		send_position(t_env *env)
+{
+	printf("%d %d\n", env->pos_y, env->pos_x);
 	return (0);
 }

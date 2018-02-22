@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/21 16:43:28 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/22 15:19:08 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	get_player(t_env *env)
 	lookup += 10;
 	player = *lookup - '0';
 	env->player = (player - 1) ? 'X' : 'O';
-	dprintf(2, "player [%c]", env->player);
+	env->enemy = (player - 1) ? 'O' : 'X';
+	dprintf(2, "player [%c]", env->enemy);
 }
 
 void	get_coord(t_env *env)

@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/21 16:44:05 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/22 16:23:43 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	make_piece(t_env *env)
 		env->piece[i] = line;
 		i++;
 	}
+	//dprintf(2, "***[%c]***", env->piece[0][0]);
 	print_piece(env);
 }
