@@ -3,35 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cblesche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 12:53:48 by cblesche          #+#    #+#             */
-/*   Updated: 2016/11/23 14:02:20 by cblesche         ###   ########.fr       */
+/*   Created: 2016/11/28 20:09:09 by yribeiro          #+#    #+#             */
+/*   Updated: 2016/11/28 20:13:00 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int		i;
-	int		y;
-	size_t	size;
+	size_t s2_size;
 
-	if (ft_strlen(haystack) < ft_strlen(needle))
-		return (NULL);
-	if (!*haystack || !*needle || haystack == needle)
-		return ((char *)haystack);
-	i = 0;
-	size = n;
-	while (n && haystack[i])
+	s2_size = ft_strlen(s2);
+	if (!*s2)
+		return ((char *)s1);
+	while (n && *s1)
 	{
-		y = 0;
-		while (needle[y] && haystack[i + y] == needle[y])
-			y++;
-		if (!needle[y] && size >= (size_t)i + y)
-			return ((char *)haystack + i);
-		i++;
+		if (n < s2_size)
+			return (NULL);
+		if (*s1 == *s2)
+		{
+			if (ft_strncmp(s1, s2, s2_size) == 0)
+				return ((char *)s1);
+		}
+		s1++;
 		n--;
 	}
 	return (NULL);
