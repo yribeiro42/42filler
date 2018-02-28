@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/22 16:23:43 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:59:24 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 void	print_piece(t_env *env)
 {
 	int		i;
+	int		j;
 
 	i = 0;
-	dprintf(2, "\nPiece %d %d:\n", env->piece_y, env->piece_x);
+	//dprintf(2, "\nPiece %d %d:\n", env->piece_y, env->piece_x);
 	while (i < env->piece_y)
 	{
-		dprintf(2, "%s\n", env->piece[i]);
+		j = 0;
+		while (j < env->piece_x)
+		{
+			//dprintf(2, "%c", env->piece[i][j]);
+			j++;
+		}
+		dprintf(2, "TEUB");
+		//dprintf(2, "\n");
 		i++;
 	}
 }
@@ -45,13 +53,12 @@ void	make_piece(t_env *env)
 	int		i;
 
 	i = 0;
-	env->piece = ft_memalloc(env->piece_y);
+	env->piece = ft_memalloc(sizeof(char*) * (env->piece_y + 1));
 	while (i < env->piece_y)
 	{
 		get_next_line(0, &line);
 		env->piece[i] = line;
 		i++;
 	}
-	//dprintf(2, "***[%c]***", env->piece[0][0]);
 	print_piece(env);
 }

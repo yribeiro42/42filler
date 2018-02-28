@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/22 15:19:08 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:52:21 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	get_player(t_env *env)
 	player = *lookup - '0';
 	env->player = (player - 1) ? 'X' : 'O';
 	env->enemy = (player - 1) ? 'O' : 'X';
-	dprintf(2, "player [%c]", env->enemy);
 }
 
 void	get_coord(t_env *env)
@@ -56,7 +55,7 @@ void	get_board(t_env *env)
 	int		i;
 
 	get_next_line(0, &line);
-	env->board = ft_memalloc(env->map_y);
+	env->board = ft_memalloc(sizeof(char *) * (env->map_y + 1));
 	i = 0;
 	while (i < env->map_y)
 	{

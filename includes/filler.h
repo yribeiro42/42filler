@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:56:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/22 15:59:13 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:54:29 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ void	get_piece(t_env *env);
 void	make_piece(t_env *env);
 int		place_piece(t_env *env);
 int		get_position(t_env *env);
+int		try_place(int row, int col, t_env *env);
+int		send_position(t_env *env);
+
 
 #endif

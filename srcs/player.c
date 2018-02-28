@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:26:16 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/22 16:26:56 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:44:54 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,19 @@ int		place_piece(t_env *env)
 	int		ret;
 
 	row = env->map_y;
-	while (row > 0)
+	while (row-- > 0)
 	{
 		col = env->map_x;
-		while (col > 0)
+		while (col-- > 0)
 		{
-			ret = try_place(row, col, env);
-			if (ret == 1)
+			if (try_place(row, col, env))
 			{
 				send_position(env);
 				return (1);
 			}
-			col--;
-		}
-		row--;
+		} 
 	}
+	send_position(env);
 	return (0);
 }
 
@@ -64,30 +62,34 @@ int		try_place(int row, int col, t_env *env)
 	int		j;
 	int		contact;
 
-	i = -1;
-	while (++i < env->piece_y)
+	i = 0;
+	while (i < env->piece_y)
 	{
-		j = -1;
-		while (j++ < env->piece_x)
+		j = 0;
+		while (j < env->piece_x)
 		{
-			dprintf(2, "\npiece[%d][%d]:[%c]", i, j, env->piece[i][j]);
-			dprintf(2, "\nboard[%d][%d]:[%c]", (row + i), (col + j), env->board[row + i][col + j]);
-			if (env->piece[i][j] == '*' && (env->board[row + i][col + j] ==
-				env->player))
-				contact++;
+			if ((row + i) < env->map_y && (col + j) < env->map_x)
+			{
+				if (env->piece[i][j] == '*' && (env->board[row + i][col + j] == env->player))
+					contact++;
+			}
+			j++;	
 		}
+		i++;
 	}
 	if (contact == 1)
 	{
+		dprintf(2, "\nrow[%d];col[%d]\n", row, col);
 		env->pos_y = row;
 		env->pos_x = col;
 		return (1);
 	}
+
 	return (0);
 }
 
 int		send_position(t_env *env)
 {
-	printf("%d %d\n", env->pos_y, env->pos_x);
+	ft_printf("%d %d\n", env->pos_y, env->pos_x);
 	return (0);
 }

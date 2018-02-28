@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 14:05:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2016/11/15 11:13:36 by yribeiro         ###   ########.fr       */
+/*   Created: 2016/11/09 12:50:04 by cblesche          #+#    #+#             */
+/*   Updated: 2018/02/28 19:49:47 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void	*mem;
+	void	*ret;
 
-	mem = malloc(sizeof(size_t) * size);
-	if (!mem)
+	if (!(ret = malloc(size)))
 		return (NULL);
-	ft_bzero(mem, size);
-	return (mem);
+	ft_bzero(ret, size);
+	return (ret);
 }
