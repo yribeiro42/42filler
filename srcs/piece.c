@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/28 21:11:03 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/02/28 21:37:34 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_piece(t_env *env)
 			//dprintf(2, "%c", env->piece[i][j]);
 			j++;
 		}
-		dprintf(2, "TEUB");
+		dprintf(2, "OK");
 		//dprintf(2, "\n");
 		i++;
 	}
@@ -60,5 +60,6 @@ void	make_piece(t_env *env)
 		env->piece[i] = line;
 		i++;
 	}
+	//dprintf(2, "OK");
 	print_piece(env);
 }
