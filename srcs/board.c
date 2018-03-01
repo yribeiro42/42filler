@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/28 21:27:36 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/01 16:09:13 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	get_board(t_env *env)
 		env->board[i] = line;
 		i++;
 	}
-	print_board(env);
+	//print_board(env);
 }

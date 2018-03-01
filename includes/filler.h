@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:56:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/28 19:54:29 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/01 16:06:06 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef	struct	s_env
 void	get_player(t_env *env);
 void	get_coord(t_env *env);
 void	get_board(t_env *env);
-void	print_piece(t_env *env);
+int		print_piece(t_env *env);
 void	get_piece(t_env *env);
 void	make_piece(t_env *env);
 int		place_piece(t_env *env);

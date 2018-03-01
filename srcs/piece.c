@@ -6,31 +6,23 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/28 21:37:34 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/01 16:31:10 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	print_piece(t_env *env)
+int		print_piece(t_env *env)
 {
 	int		i;
-	int		j;
 
 	i = 0;
-	//dprintf(2, "\nPiece %d %d:\n", env->piece_y, env->piece_x);
 	while (i < env->piece_y)
 	{
-		j = 0;
-		while (j < env->piece_x)
-		{
-			//dprintf(2, "%c", env->piece[i][j]);
-			j++;
-		}
-		dprintf(2, "OK");
-		//dprintf(2, "\n");
+		dprintf(2, "[i%d][%s]\n", i, env->piece[i]);
 		i++;
 	}
+	return (0);
 }
 
 void	get_piece(t_env *env)
@@ -60,6 +52,5 @@ void	make_piece(t_env *env)
 		env->piece[i] = line;
 		i++;
 	}
-	//dprintf(2, "OK");
-	print_piece(env);
+	//print_piece(env);
 }

@@ -1,60 +1,73 @@
-
-[map_y : 15][map_x : 17]
-
-000  .................
-001  .................
-002  .................
-003  .................
-004  .................
-005  .................
-006  .................
-007  .................
-008  .OO..............
-009  .................
-010  .................
-011  .................
-012  ..............X..
-013  .................
-014  .................
-OKOK
-row[12];col[14]
-
-[map_y : 15][map_x : 17]
-
-000  .................
-001  .................
-002  .................
-003  .................
-004  .................
-005  .................
-006  .................
-007  .................
-008  OOO..............
-009  .................
-010  .................
-011  .................
-012  ..............X..
-013  ..............X..
-014  .................
-OKOK
-row[13];col[14]
-
-[map_y : 15][map_x : 17]
-
-000  .................
-001  .................
-002  .................
-003  .................
-004  .................
-005  .................
-006  .................
-007  .O...............
-008  OOO..............
-009  .................
-010  .................
-011  .................
-012  ..............X..
-013  ..............XX.
-014  ..............X..
-OKOKOK
-row[14];col[4]
+send_position 12 14
+send_position 12 15
+send_position 12 13
+send_position 12 11
+send_position 12 16
+send_position 13 14
+send_position 13 16
+send_position 12 12
+send_position 13 11
+send_position 13 15
+send_position 13 14
+send_position 13 13
+send_position 14 12
+send_position 13 10
+send_position 14 9
+send_position 13 8
+send_position 13 7
+send_position 14 6
+send_position 13 6
+send_position 12 11
+send_position 12 4
+send_position 14 5
+send_position 13 4
+send_position 14 3
+send_position 14 3
+send_position 14 2
+send_position 13 1
+send_position 13 2
+send_position 13 0
+send_position 12 10
+send_position 12 9
+send_position 12 8
+send_position 12 6
+send_position 11 3
+send_position 12 2
+send_position 12 1
+send_position 12 0
+send_position 10 4
+send_position 11 5
+send_position 11 16
+send_position 11 15
+send_position 11 14
+send_position 11 13
+send_position 10 11
+send_position 11 11
+send_position 10 10
+send_position 11 8
+send_position 10 7
+send_position 10 7
+send_position 11 2
+send_position 10 1
+send_position 10 15
+send_position 9 14
+send_position 10 13
+send_position 11 0
+send_position 10 9
+send_position 10 5
+send_position 10 9
+send_position 9 2
+send_position 10 0
+send_position 8 15
+send_position 9 13
+send_position 9 12
+send_position 9 11
+send_position 9 10
+send_position 9 9
+send_position 9 8
+send_position 9 7
+send_position 8 6
+send_position 8 5
+send_position 9 2
+send_position 9 1
+send_position 9 1
