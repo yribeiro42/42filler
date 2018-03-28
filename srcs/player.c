@@ -6,31 +6,11 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:26:16 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/28 13:24:03 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/28 16:20:44 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-int		get_position(t_env *env)
-{
-	int	i;
-	int	y;
-
-	i = 0;
-	while (i < env->map_y)
-	{
-		y = 0;
-		while (y < env->map_x)
-		{
-			if (env->board[i][y] == env->player)
-				return (y + (i * env->map_x));
-			y++;
-		}
-		i++;
-	}
-	return (-1);
-}
 
 int		place_piece(t_env *env)
 {

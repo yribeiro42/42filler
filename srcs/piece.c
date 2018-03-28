@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/01 16:31:10 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/28 16:22:20 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,37 @@ void	make_piece(t_env *env)
 		env->piece[i] = line;
 		i++;
 	}
-	//print_piece(env);
+	print_piece(env);
+}
+
+void	resize_piece(t_env *env)
+{
+	int		i;
+	int		y;
+
+	y = 0;
+	env->start_x = env->piece_x;
+	env->start_y = env->piece_y;
+	while (y < env->piece_y)
+	{
+		i = 0;
+		while (i < env->piece_x)
+		{
+			if (env->piece[y][i] == '*')
+			{
+				if (i < env->start_x)
+					env->start_x = i;
+				if (i > env->end_x)
+					env->end_x = i;
+				if (y < env->start_y)
+					env->start_y = y;
+				if (y > env->end_y)
+					env->end_y = y;
+			}
+			i++;
+		}
+		y++;
+	}
+	dprintf(2, "\nstart_x = [%d] end_x = [%d]\n", env->start_x, env->end_x);
+	dprintf(2, "start_y = [%d] end_y = [%d]\n", env->start_y, env->end_y);
 }
