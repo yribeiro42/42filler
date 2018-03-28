@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/01 16:09:13 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/01 18:44:08 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	get_board(t_env *env)
 	char	*line;
 	int		i;
 
-	get_next_line(0, &line);
+	if (!(get_next_line(0, &line)))
+		return ;
 	env->board = ft_memalloc(sizeof(char *) * (env->map_y + 1));
 	i = 0;
 	while (i < env->map_y)

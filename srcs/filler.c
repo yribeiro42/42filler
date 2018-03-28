@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:39:52 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/02/28 21:26:41 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/28 13:29:10 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int		main(void)
 		get_board(env);
 		get_piece(env);
 		make_piece(env);
-		place_piece(env);
+		if (!(place_piece(env)))
+			return (0);
 	}
 	return (0);
 }
