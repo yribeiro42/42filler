@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/28 16:22:20 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/03/29 14:24:49 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int		print_piece(t_env *env)
 	int		i;
 
 	i = 0;
+	dprintf(2, "Piece %d %d:\n", env->piece_y, env->piece_x);
 	while (i < env->piece_y)
 	{
-		dprintf(2, "[i%d][%s]\n", i, env->piece[i]);
+		dprintf(2, "[%s]\n", env->piece[i]);
 		i++;
 	}
 	return (0);
@@ -63,6 +64,8 @@ void	resize_piece(t_env *env)
 	y = 0;
 	env->start_x = env->piece_x;
 	env->start_y = env->piece_y;
+	env->end_x = 0;
+	env->end_y = 0;
 	while (y < env->piece_y)
 	{
 		i = 0;
@@ -83,6 +86,9 @@ void	resize_piece(t_env *env)
 		}
 		y++;
 	}
-	dprintf(2, "\nstart_x = [%d] end_x = [%d]\n", env->start_x, env->end_x);
-	dprintf(2, "start_y = [%d] end_y = [%d]\n", env->start_y, env->end_y);
+	env->real_piece_x = env->end_x - env->start_x;
+	env->real_piece_y = env->end_y - env->start_y;
+	dprintf(2, "real size: %d %d\n", env->real_piece_y, env->real_piece_x);
+	dprintf(2, "start_x = [%d] end_x = [%d]\n", env->start_x, env->end_x);
+	dprintf(2, "start_y = [%d] end_y = [%d]\n\n", env->start_y, env->end_y);
 }

@@ -1,6 +1,4 @@
-seed = 870
-X: error on input
-../yribeiro.filler: Segfault at 0
-players/abanlin.filler won
+seed = 861
+../yribeiro.filler won
 Score:
-147AGAINST0
+175AGAINST175
