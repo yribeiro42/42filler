@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:56:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/28 16:05:52 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/05 11:54:00 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		place_piece(t_env *env);
 int		get_position(t_env *env);
 int		try_place(int row, int col, t_env *env);
 int		send_position(t_env *env);
+void	resize_piece(t_env *env);
 
 
 #endif

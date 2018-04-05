@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:26:16 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/29 14:38:21 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/05 11:53:51 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,3 @@ int		try_place(int row, int col, t_env *env)
 	}
 	return (0);
 }
-
-//int		send_position(t_env *env)
-//{
-//	dprintf(2, "send_position %d %d\n", env->pos_y, env->pos_x);
-//	ft_printf("%d %d\n", env->pos_y, env->pos_x);
-//	return (0);
-//}
-
-//dprintf(2, "(%d + %d) = [%d] ; (%d + %d) = [%d]\n", row, i, (row + i), col, j, (col + j));

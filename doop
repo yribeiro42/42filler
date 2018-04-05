@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/05 13:26:17 by yribeiro          #+#    #+#             */
+/*   Updated: 2018/04/05 13:53:59 by yribeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "do_op.h"
+
+int		main(int argc, char **argv)
+{
+	int			ret;
+	char		c;
+	char const	*op = "+-*/%";
+	fptr op_array[] = {add, substract, multiply, divide, modulo};
+
+	if (argc != 4)
+		return (0);
+	ret = 0;
+	
+
+	
+	printf("\n");
+	return (0);
+}
