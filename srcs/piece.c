@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/05 11:56:59 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/11 16:04:15 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ void	get_piece(t_env *env)
 	char	*lookup;
 
 	get_next_line(0, &lookup);
+	//dprintf(2, "line = [%s]\n", lookup);
 	while (ft_isalpha(*lookup))
 		lookup++;
 	lookup++;
+	//dprintf(2, "lookup = [%c]\n", *lookup);
 	env->piece_y = ft_atoi(lookup);
-	lookup++;
+	while (ft_isdigit(*lookup))
+		lookup++;
 	env->piece_x = ft_atoi(lookup);
+	//dprintf(2, "Piece X = [%d];[%d]\n", ft_atoi(lookup), env->piece_x);
 }
 
 void	make_piece(t_env *env)
@@ -86,9 +90,9 @@ void	resize_piece(t_env *env)
 		}
 		y++;
 	}
-	env->real_piece_x = env->end_x - env->start_x;
-	env->real_piece_y = env->end_y - env->start_y;
+	env->real_piece_x = (env->end_x - env->start_x) + 1;
+	env->real_piece_y = (env->end_y - env->start_y) + 1;
 	dprintf(2, "real size: %d %d\n", env->real_piece_y, env->real_piece_x);
-	dprintf(2, "start_x = [%d] end_x = [%d]\n", env->start_x, env->end_x);
 	dprintf(2, "start_y = [%d] end_y = [%d]\n\n", env->start_y, env->end_y);
+	dprintf(2, "start_x = [%d] end_x = [%d]\n", env->start_x, env->end_x);
 }
