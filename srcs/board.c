@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/01 18:44:08 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:13:09 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_board(t_env *env)
 {
 	int		i;
-
+	
 	i = 0;
 	dprintf(2, "\n[map_y : %d][map_x : %d]\n\n", env->map_y, env->map_x);
 	while (i < env->map_y)
@@ -65,5 +65,5 @@ void	get_board(t_env *env)
 		env->board[i] = line;
 		i++;
 	}
-	//print_board(env);
+	print_board(env);
 }

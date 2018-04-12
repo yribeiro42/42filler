@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:39:52 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/03/29 11:27:22 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:16:04 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(void)
 		get_piece(env);
 		make_piece(env);
 		resize_piece(env);
-		if (!(place_piece(env)))
+		if (!(place_piece2(env)))
 			return (0);
 	}
 	return (0);
