@@ -6,31 +6,40 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:26:16 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/12 21:07:46 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/16 20:34:25 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		get_position(t_env *env)
-{
-	int	i;
-	int	y;
+// int		get_position(t_env *env)
+// {
+// 	int	i;
+// 	int	y;
 
-	i = 0;
-	while (i < env->map_y)
-	{
-		y = 0;
-		while (y < env->map_x)
-		{
-			if (env->board[i][y] == env->player)
-				return (y + (i * env->map_x));
-			y++;
-		}
-		i++;
-	}
-	return (-1);
-}
+// 	i = 0;
+// 	while (i < env->map_y)
+// 	{
+// 		y = 0;
+// 		while (y < env->map_x)
+// 		{
+// 			if (env->board[i][y] == env->player)
+// 				{
+// 					env->my_pos_x = y;
+// 					env->my_pos_y = i;
+// 					dprintf(2, "my_pos_x = %d %d\n", env->my_pos_x, env->my_pos_y);
+// 				}
+// 			if (env->board[i][y] == env->enemy)
+// 				{
+// 					env->en_pos_x = y;
+// 					env->en_pos_y = i;
+// 				}
+// 			y++;
+// 		}
+// 		i++;
+// 	}
+// 	return (-1);
+// }
 
 int		place_piece(t_env *env)
 {
@@ -90,6 +99,7 @@ int		try_place(int row, int col, t_env *env)
 	contact = 0;
 	if ((env->real_piece_y + row) > env->map_y || (env->real_piece_x + col) > env->map_x)	
 		return (0);
+	dprintf(2, "ok");
 	while (i <= env->end_y)
 	{
 		j = env->start_x;

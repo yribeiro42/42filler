@@ -6,7 +6,7 @@
 /*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:56:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/05 11:54:00 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/16 20:27:58 by yribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ typedef	struct	s_env
 	int			end_y;
 	int			pos_x;
 	int			pos_y;
+	int			my_pos_x;
+	int			my_pos_y;
+	int			en_pos_x;
+	int			en_pos_y;
 	char		**board;
 	char		**piece;
 }				t_env;
