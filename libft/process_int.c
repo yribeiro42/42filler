@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 18:14:02 by yribeiro          #+#    #+#             */
-/*   Updated: 2017/10/27 20:24:14 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:45:46 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ long long	get_number_length(t_parser *p, va_list **args)
 	else if (p->length == LL)
 		number = (long long)number;
 	else if (p->length == J)
-		number = (intmax_t)number;
+		number = (__intmax_t)number;
 	else if (p->length == Z)
 		number = (size_t)number;
 	else if (p->length == DEFAULT)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   board.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:24:14 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/12 21:13:09 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:39:02 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	get_coord(t_env *env)
 	while (ft_isdigit(*lookup))
 		lookup++;
 	env->map_x = ft_atoi(lookup);
+	get_board(env);
 }
 
 void	get_board(t_env *env)
@@ -65,5 +66,7 @@ void	get_board(t_env *env)
 		env->board[i] = line;
 		i++;
 	}
+	get_piece(env);
 	print_board(env);
+	get_position(env);
 }

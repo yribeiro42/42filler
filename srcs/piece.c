@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   piece.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:52:53 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/12 20:44:25 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:24:07 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	make_piece(t_env *env)
 		i++;
 	}
 	print_piece(env);
+	resize_piece(env);
 }
 
 void	resize_piece(t_env *env)

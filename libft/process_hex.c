@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yribeiro <yribeiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 16:39:35 by yribeiro          #+#    #+#             */
-/*   Updated: 2017/10/27 20:43:37 by yribeiro         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:45:43 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ long long	get_xnumber_length(t_parser *p, va_list **args)
 	else if (p->length == LL)
 		number = (unsigned long long)number;
 	else if (p->length == J)
-		number = (uintmax_t)number;
+		number = (__uintmax_t)number;
 	else if (p->length == Z)
 		number = (size_t)number;
 	else if (p->length == DEFAULT)
