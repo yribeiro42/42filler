@@ -6,7 +6,7 @@
 /*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:56:31 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/17 16:44:59 by skitoak          ###   ########.fr       */
+/*   Updated: 2018/04/18 11:51:20 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	get_piece(t_env *env);
 void	make_piece(t_env *env);
 int		place_piece1(t_env *env);
 int		place_piece4(t_env *env);
-int		get_position(t_env *env);
+void	get_position(t_env *env);
 int		try_place(int row, int col, t_env *env);
 int		send_position(t_env *env);
 void	resize_piece(t_env *env);

@@ -6,7 +6,7 @@
 /*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:39:52 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/17 17:42:30 by skitoak          ###   ########.fr       */
+/*   Updated: 2018/04/18 11:56:02 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		algo(t_env *env)
 {
-	if ((env->my_pos_y + 1) == env->map_y)
-		return (place_piece2(env));
+	dprintf(2, "my_pos = %d %d\n", env->my_pos_y, env->my_pos_x);
+	dprintf(2, "en_pos = %d %d\n", env->en_pos_y, env->en_pos_x);
 	if (env->my_pos_y > env->en_pos_y)
 	{
 		if (env->my_pos_x <= env->en_pos_x)

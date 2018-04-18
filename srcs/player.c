@@ -6,18 +6,20 @@
 /*   By: skitoak <skitoak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 15:26:16 by yribeiro          #+#    #+#             */
-/*   Updated: 2018/04/17 17:25:38 by skitoak          ###   ########.fr       */
+/*   Updated: 2018/04/18 11:57:36 by skitoak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		get_position(t_env *env)
+void	get_position(t_env *env)
 {
-	int	i;
-	int	y;
+	static int	i;
+	int			y;
 
 	i = 0;
+	if (i == env->map_y)
+		return ;
 	while (i < env->map_y)
 	{
 		y = 0;
@@ -27,7 +29,6 @@ int		get_position(t_env *env)
 				{
 					env->my_pos_x = y;
 					env->my_pos_y = i;
-					//dprintf(2, "my_pos = %d %d\n", env->my_pos_y, env->my_pos_x);
 				}
 			if (env->board[i][y] == env->enemy)
 				{
@@ -38,7 +39,6 @@ int		get_position(t_env *env)
 		}
 		i++;
 	}
-	return (-1);
 }
 
 int		place_piece4(t_env *env)
